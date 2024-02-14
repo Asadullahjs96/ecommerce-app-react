@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const ProductCard = ({ title, price, description, image, id }) => {
 
@@ -15,7 +15,7 @@ const ProductCard = ({ title, price, description, image, id }) => {
 
   return (
     <>
-      <div onClick={() => showProductDetails(id)} className="card w-96 bg-base-100 shadow-xl">
+      <div onClick={() => showProductDetails(id)}  className="card w-96 bg-base-100 shadow-xl">
         <figure className="px-10 pt-10">
           <img src={image} alt="product-image" className="rounded-xl" />
         </figure>

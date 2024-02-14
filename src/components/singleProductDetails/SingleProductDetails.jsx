@@ -17,7 +17,7 @@ const SingleProductDetails = ({ image, title, description, price, id }) => {
   // Adding Product In Redux Cart
   const productAddToCart = () => {
 
-    axios.get(`https://fakestoreapi.com/products/${id}`)
+    axios.get(`https://api.escuelajs.co/api/v1/products/${id}`)
       .then((res) => {
 
         if (selector.length === 0) {
@@ -27,17 +27,23 @@ const SingleProductDetails = ({ image, title, description, price, id }) => {
             title: res.data.title,
             price: res.data.price,
             description: res.data.description,
-            image: res.data.image,
+            image: res.data.images,
             id: res.data.id
           }))
 
           // Sweet Alert
           Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Product Added to Cart",
-            showConfirmButton: false,
-            timer: 1500
+            title: "Product added in your card",
+            width: 600,
+            padding: "3em",
+            color: "#716add",
+            background: "#fff url(/images/trees.png)",
+            backdrop: `
+              rgba(0,0,123,0.4)
+              url("/images/nyan-cat.gif")
+              left top
+              no-repeat
+            `
           });
         }
         else {
@@ -53,14 +59,20 @@ const SingleProductDetails = ({ image, title, description, price, id }) => {
 
           if (productAlreadyExist) {
 
-            // Sweet Alert
             Swal.fire({
-              position: "top-end",
-              icon: "error",
-              title: "Product Already in Cart",
-              showConfirmButton: false,
-              timer: 1500
+              title: "Product already in your cart",
+              width: 600,
+              padding: "3em",
+              color: "#716add",
+              background: "#fff url(/images/trees.png)",
+              backdrop: `
+                rgba(0,0,123,0.4)
+                url("/images/nyan-cat.gif")
+                left top
+                no-repeat
+              `
             });
+            
           }
           else {
 
@@ -69,17 +81,23 @@ const SingleProductDetails = ({ image, title, description, price, id }) => {
               title: res.data.title,
               price: res.data.price,
               description: res.data.description,
-              image: res.data.image,
+              image: res.data.images,
               id: res.data.id
             }))
 
             // Sweet Alert
             Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "Product Added to Cart",
-              showConfirmButton: false,
-              timer: 1500
+              title: "Product added in your card",
+              width: 600,
+              padding: "3em",
+              color: "#716add",
+              background: "#fff url(/images/trees.png)",
+              backdrop: `
+                rgba(0,0,123,0.4)
+                url("/images/nyan-cat.gif")
+                left top
+                no-repeat
+              `
             });
           }
 
@@ -97,7 +115,7 @@ const SingleProductDetails = ({ image, title, description, price, id }) => {
       {/* Product Details Card */}
       <div className='flex justify-center my-10'>
         <div className="card card-side w-[80%] rounded-xl bg-base-200 shadow-xl">
-          <div className='w-[30%] p-8 rounded-lg'>
+          <div className='w-[30%] p-6 rounded-lg'>
             <figure><img src={image} alt="Movie" /></figure>
           </div>
           <div className="card-body w-[70%]">
